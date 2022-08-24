@@ -1,6 +1,6 @@
 public class JadenCase {
     public String toJadenCase(String phrase) {
-        // TODO put your code below this comment
+
         String res = "";
         if(phrase!= null && !phrase.isEmpty()){
             String[] words = phrase.split(" ");

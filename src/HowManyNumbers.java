@@ -23,9 +23,20 @@ public class HowManyNumbers {
     }
     private static void getNumbers(Long currNum, int prevNum, int sumLeft, int digitsLeft) {
         if (sumLeft == 0 && digitsLeft == 0) {
-            if (count == 0) min = currNum;
-            min = min < currNum ? min : currNum;
+            if (count == 0) {
+                min = currNum;
+            }
+            if(min < currNum){
+                min = min;
+            } else{
+                min = currNum;
+            }
             max = max > currNum ? max : currNum;
+            if(min < currNum){
+                min = min;
+            } else{
+                min = currNum;
+            }
             count++;
         } else if (digitsLeft != 0) {
             for (int i = prevNum; i < 10; i++) {
@@ -35,7 +46,7 @@ public class HowManyNumbers {
     }
 
     public static void main(String[] args) {
-        List<Long> ls= findAll(10,3);
+        List<Long> ls= findAll(27,3);
         for (Long l: ls) {
             System.out.println(l);
         }
