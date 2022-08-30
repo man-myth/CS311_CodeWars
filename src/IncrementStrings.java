@@ -1,30 +1,37 @@
+import java.math.BigInteger;
+
 public class IncrementStrings {
     public static String incrementString(String str) {
         char[] chars = str.toCharArray();
-        StringBuilder s = new StringBuilder();
-        StringBuilder d = new StringBuilder();
-        StringBuilder f = new StringBuilder();
-        int zeros = 0;
-
-        for(char c : chars){
-            if(Character.isDigit(c)){
-                d.append(c);
-            }else {
-                s.append(c);
+        String s = ""; //string
+        String d = ""; //digits
+        StringBuilder f = new StringBuilder(); //final
+        StringBuilder zeros = new StringBuilder();
+        int num = 0 ;           //number of digits
+        int index = 0;
+        for (int g = chars.length-1; g >= 0; g--){
+            if (!Character.isDigit(chars[g])){
+                index = g+1;
+                break;
             }
         }
+        s = str.substring(0,index);
+        d = str.substring(index);
 
+        num = d.length(); // get number of digits
 
-
-        for(int i =0; i<d.length(); i++){
-           // if
+        BigInteger i;             // add 1
+        if(d.toString().isEmpty()){
+            i = new BigInteger("1");
+        } else{
+            i = new BigInteger(d.toString()).add(new BigInteger("1"));
         }
-        int i = Integer.parseInt(d.toString()) + 1;
+        int r = num - String.valueOf(i).length(); // numbers of remaining digits
+        for(int j = 0; j < r; j++){
+            zeros.append('0');
+        }
         f.append(s).append(zeros).append(i);
         return f.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(incrementString("foo045"));
-    }
 }
+
