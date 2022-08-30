@@ -6,7 +6,7 @@ public class Interval {
         int count = 0;
         int start = 0;
         int end = 0;
-        int iterations = 5;
+        int iterations = 1;
 
         for(int i = 0 ; i < intervals.length; i++){
             if(intervals[i][1] <= intervals[i][0]){
@@ -35,16 +35,13 @@ public class Interval {
                 }
                 iterations--;
             }
-
+            iterations = 1;
             count += end - start;
         }
+
         return count;
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(sumIntervals(new int[][]{{-350, -338},
-                {-365, -360}, {-13, 6}, {-449, -440}, {189, 207}, {361, 374},{-226, -219},{-38, -34},{361, 37}}));
-    }
 }
 
